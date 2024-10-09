@@ -16,7 +16,9 @@ const config = {
     OPEN_AI_API_KEY: process.env.OPEN_AI_API_KEY,
     ASSISTANT_ID: process.env.ASSISTANT_ID,
     SHEET_ID: process.env.SHEET_ID,
-    WEB_SERVICE_URL: process.env.WEB_SERVICE_URL
+    WEB_SERVICE_URL: process.env.WEB_SERVICE_URL,
+    APP_DOMAIN: process.env.APP_DOMAIN, 
+    MERCADOPAGO_ACCESS_TOKEN: process.env.MERCADOPAGO_ACCESS_TOKEN
 
 };
 

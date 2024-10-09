@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { sendMessage } from '../controllers/webController.js';
+import { sendMessage, webChat } from '../controllers/webController.js';
 
 const webRouter = Router();
 
 webRouter.post('/', sendMessage);
+
+webRouter.get('/chat', webChat);
 
 export default webRouter;

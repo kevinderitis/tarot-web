@@ -39,9 +39,9 @@ export const createResponse = async chatId => {
 
 }
 
-export const createLeadService = async (chatId, clientPhone) => {
+export const createLeadService = async (chatId, threadId) => {
     try {
-        let newLead = await createLead(chatId, clientPhone);
+        let newLead = await createLead(chatId, threadId);
         return newLead;
     } catch (error) {
         throw error;
@@ -74,3 +74,35 @@ export const getLeadByChatIdService = async chatId => {
         throw error;
     }
 }
+
+export const validateLeadPayment = async (chatId) => {
+    try {
+        let lead = await getLeadByChatId(chatId);
+
+        if (!lead) {
+            return false;
+        }
+
+        if (!lead.payment) {
+            return false;
+        }
+
+        const paymentDate = new Date(lead.payment);
+        const now = new Date();
+
+        const differenceInMs = now - paymentDate;
+
+        const differenceInHours = differenceInMs / (1000 * 60 * 60);
+
+        if (differenceInHours < 15) {
+            console.log('El pago se realizó hace menos de 15 horas.');
+            return true;
+        } else {
+            console.log('El pago se realizó hace más de 15 horas.');
+            return false;
+        }
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};

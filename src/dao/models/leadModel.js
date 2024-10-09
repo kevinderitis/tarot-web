@@ -14,6 +14,9 @@ const leadSchema = new mongoose.Schema({
   },
   threadId: {
     type: String
+  },
+  payment: {
+    type: Date
   }
 }, { timestamps: true });
 

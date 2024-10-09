@@ -161,7 +161,8 @@ export const botMsg = async (prompt, chatId) => {
 
         let response = await sendMessage(prompt, threadId, config.ASSISTANT_ID);
         if (!threadId && response.threadId) {
-            await createLead(chatId, response.threadId);
+            // await createLead(chatId, response.threadId);
+            await updateLeadByMainThreadId(chatId, response.threadId);
         }
         return response.response;
     } catch (error) {

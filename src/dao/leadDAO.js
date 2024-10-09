@@ -212,4 +212,24 @@ const updateLeadNameByThreadId = async (threadId, name) => {
   }
 };
 
-export { createLead, getAllLeads, getLeadById, updateLeadById, deleteLeadById, getLeadByChatId, updateLeadPaymentByChatId, updateLeadByMainThreadId, updateManyPayments, updateLeadStatusByChatId, getLastPendingLeads, updateLeadNameByThreadId };
+const saveLeadPayment = async (chatId) => {
+  try {
+    let lead = await Lead.findOne({ chatId });
+
+    if (!lead) {
+      throw new Error('Lead no encontrado');
+    }
+
+    lead.payment = new Date();
+
+    await lead.save();
+
+    console.log(`Fecha de pago registrada para el lead con chatId: ${chatId}`);
+    return lead;
+  } catch (error) {
+    console.log('Error al registrar el pago:', error);
+    throw error;
+  }
+};
+
+export { createLead, getAllLeads, getLeadById, updateLeadById, deleteLeadById, getLeadByChatId, updateLeadPaymentByChatId, updateLeadByMainThreadId, updateManyPayments, updateLeadStatusByChatId, getLastPendingLeads, updateLeadNameByThreadId, saveLeadPayment };
