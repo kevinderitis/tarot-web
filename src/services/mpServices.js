@@ -11,7 +11,7 @@ export const createPaymentPreference = async chatId => {
             body: {
                 items: [{
                     title: 'Tirada tarot egipcio',
-                    unit_price: 5000,
+                    unit_price: 2500,
                     quantity: 1
                 }],
                 external_reference: chatId,
