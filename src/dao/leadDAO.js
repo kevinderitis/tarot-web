@@ -165,6 +165,26 @@ const updateLeadByMainThreadId = async (chatId, threadId) => {
   }
 };
 
+const updateLeadAmarresThreadId = async (chatId, threadId) => {
+  try {
+    const lead = await Lead.findOne({ chatId });
+
+    if (!lead) {
+      throw new Error('Lead no encontrado');
+    }
+
+    lead.amarresThreadId = threadId;
+
+    await lead.save();
+
+    console.log('Lead actualizado:', lead);
+    return lead;
+  } catch (error) {
+    console.error('Error al actualizar lead por chatId:', error.message);
+    throw new Error('No se pudo actualizar el lead');
+  }
+};
+
 const deleteLeadById = async (leadId) => {
   try {
     const deletedLead = await Lead.findByIdAndDelete(leadId);
@@ -232,4 +252,4 @@ const saveLeadPayment = async (chatId) => {
   }
 };
 
-export { createLead, getAllLeads, getLeadById, updateLeadById, deleteLeadById, getLeadByChatId, updateLeadPaymentByChatId, updateLeadByMainThreadId, updateManyPayments, updateLeadStatusByChatId, getLastPendingLeads, updateLeadNameByThreadId, saveLeadPayment };
+export { createLead, getAllLeads, getLeadById, updateLeadById, deleteLeadById, getLeadByChatId, updateLeadPaymentByChatId, updateLeadByMainThreadId, updateManyPayments, updateLeadStatusByChatId, getLastPendingLeads, updateLeadNameByThreadId, saveLeadPayment, updateLeadAmarresThreadId };

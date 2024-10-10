@@ -15,6 +15,9 @@ const leadSchema = new mongoose.Schema({
   threadId: {
     type: String
   },
+  amarresThreadId: {
+    type: String
+  },
   payment: {
     type: Date
   }
