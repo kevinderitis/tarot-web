@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import config from '../config/config.js';
 import { executeActionWithParams } from '../functions/gptFunctions.js';
-import { createLead, getLeadByChatId, updateLeadByMainThreadId } from '../dao/leadDAO.js';
+import { createLead, getLeadByChatId, updateLeadByMainThreadId, updateLeadAmarresThreadId } from '../dao/leadDAO.js';
 
 const openai = new OpenAI({ apiKey: config.OPEN_AI_API_KEY });
 
@@ -163,6 +163,23 @@ export const botMsg = async (prompt, chatId) => {
         if (!threadId && response.threadId) {
             // await createLead(chatId, response.threadId);
             await updateLeadByMainThreadId(chatId, response.threadId);
+        }
+        return response.response;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
+
+export const amarresBotMsg = async (prompt, chatId) => {
+    try {
+        let lead = await getLeadByChatId(chatId);
+        let threadId = lead ? lead.amarresThreadId : null;
+
+        let response = await sendMessage(prompt, threadId, config.AMARRES_ASSISTANT_ID);
+        if (!threadId && response.threadId) {
+            // await createLead(chatId, response.threadId);
+            await updateLeadAmarresThreadId(chatId, response.threadId);
         }
         return response.response;
     } catch (error) {

@@ -18,8 +18,8 @@ const config = {
     SHEET_ID: process.env.SHEET_ID,
     WEB_SERVICE_URL: process.env.WEB_SERVICE_URL,
     APP_DOMAIN: process.env.APP_DOMAIN, 
-    MERCADOPAGO_ACCESS_TOKEN: process.env.MERCADOPAGO_ACCESS_TOKEN
-
+    MERCADOPAGO_ACCESS_TOKEN: process.env.MERCADOPAGO_ACCESS_TOKEN,
+    AMARRES_ASSISTANT_ID: process.env.AMARRES_ASSISTANT_ID
 };
 
 export default config;
