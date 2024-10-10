@@ -39,7 +39,7 @@ export const webChatAmarres = async (req, res) => {
     }
 
     try {
-        if (!req.cookies.user_session) {
+        if (!req.cookies.user_session || req.query.email !== req.cookies.user_session) {
             res.cookie('user_session', email, { expires: new Date(9999, 0, 1), httpOnly: true });
             await createLeadService(email);
         }
