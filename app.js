@@ -4,8 +4,10 @@ import leadsRouter from './src/routes/leadsRouter.js';
 import webRouter from './src/routes/webRouter.js';
 import mpRouter from './src/routes/mpRouter.js';
 import amarresRouter from './src/routes/amarresRouter.js';
+import iglesiaRouter from './src/routes/iglesiaRouter.js';
 import config from './src/config/config.js';
 import cookieParser from 'cookie-parser';
+
 
 const app = express();
 const port = config.PORT || 3000;
@@ -20,6 +22,7 @@ app.use('/leads', leadsRouter);
 app.use('/webchat', webRouter);
 app.use('/mp', mpRouter);
 app.use('/amarres', amarresRouter);
+app.use('/iglesia', iglesiaRouter);
 
 const server = app.listen(port, () => {
     console.log(`Server listening on port ${port}`);

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iglesia de la Divina Misericordia - Consultas Espirituales Gratuitas</title>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        :root {
+            --color-primary: #3a5683;
+            --color-secondary: #d4af37;
+            --color-accent: #8b9dc3;
+            --color-background: #f0f3f8;
+            --color-text: #333;
+            --color-text-light: #fff;
+            --color-card: #fff;
+            --color-card-hover: #e6eaf0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-background);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero {
+            background-image: linear-gradient(rgba(58, 86, 131, 0.7), rgba(139, 157, 195, 0.7)), url('https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--color-text-light);
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-secondary);
+            color: var(--color-text);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e9c84d;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            flex-basis: 30%;
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: var(--color-card);
+        }
+
+        .feature:hover {
+            background-color: var(--color-card-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            border: 3px solid var(--color-secondary);
+        }
+
+        .testimonials {
+            background-color: var(--color-accent);
+            color: var(--color-text-light);
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .popular-topics {
+            background-color: #e1e6f0;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .topic {
+            background-color: var(--color-card);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--color-primary);
+        }
+
+        .topic:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--color-card-hover);
+        }
+
+        footer {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+
+        .about-padre {
+            background-color: var(--color-card);
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-padre-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .about-padre-image {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .about-padre-image img {
+            width: 100%;
+            max-width: 250px;
+            border: 5px solid var(--color-secondary);
+        }
+
+        .about-padre-text {
+            flex: 2;
+            min-width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Iglesia de la Divina Misericordia</h1>
+        <p>Guía espiritual y consuelo para el alma</p>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Encuentra paz y orientación con el Padre Eduardo</h2>
+                <p>"Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar" - Mateo 11:28</p>
+                <a href="#" class="cta-button" onclick="openEmailModal()">Consulta Gratuita</a>
+            </div>
+        </section>
+
+        <section class="about-padre">
+            <div class="container">
+                <h2>Conoce al Padre Eduardo Montes</h2>
+                <div class="about-padre-content">
+                    <div class="about-padre-image">
+                        <img src="https://images.unsplash.com/photo-1594895418628-2e70c5e7d1b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Padre Eduardo Montes">
+                    </div>
+                    <div class="about-padre-text">
+                        <p>Con más de tres décadas de servicio a la comunidad, el Padre Eduardo Montes ha dedicado su vida a guiar y confortar a quienes buscan paz espiritual y consejo.</p>
+                        <p>Su profunda fe, combinada con su empatía y sabiduría, ha ayudado a miles de personas a encontrar consuelo y dirección en sus vidas.</p>
+                        <p>El Padre Eduardo se especializa en consejería espiritual, orientación familiar y apoyo en momentos de crisis. Su enfoque único combina las enseñanzas de la Iglesia con una comprensión moderna de los desafíos de la vida cotidiana.</p>
+                        <p>Ahora, el Padre Eduardo ofrece consultas gratuitas en línea, permitiéndote acceder a su guía y consuelo desde la comodidad de tu hogar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>¿Por qué elegir nuestro servicio de consulta espiritual?</h2>
+            <div class="features">
+                <div class="feature">
+                    <img src="https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Experiencia">
+                    <h3>Experiencia y Sabiduría</h3>
+                    <p>Más de 30 años brindando guía espiritual y consuelo</p>
+                </div>
+                <div class="feature">
+                    <img src="https://images.unsplash.com/photo-1516534775068-ba3e7458af70?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Personalizado">
+                    <h3>Atención Personalizada</h3>
+                    <p>Cada consulta se adapta a tu situación y necesidades específicas</p>
+                </div>
+                <div class="feature">
+                    <img src="https://images.unsplash.com/photo-1532635241-17e820acc59f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Confidencialidad">
+                    <h3>100% Confidencial</h3>
+                    <p>Tu privacidad está garantizada en cada consulta</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="popular-topics">
+            <div class="container">
+                <h2>Temas de consulta más frecuentes</h2>
+                <div class="topic" id="fe">
+                    <h3>Fortalecimiento de la Fe</h3>
+                    <p>Encuentra guía para profundizar tu relación con Dios</p>
+                </div>
+                <div class="topic" id="familia">
+                    <h3>Consejería Familiar</h3>
+                    <p>Apoyo para resolver conflictos y fortalecer los lazos familiares</p>
+                </div>
+                <div class="topic" id="perdon">
+                    <h3>El Poder del Perdón</h3>
+                    <p>Aprende a perdonar y libérate de cargas emocionales</p>
+                </div>
+                <div class="topic" id="oracion">
+                    <h3>Vida de Oración</h3>
+                    <p>Descubre cómo enriquecer tu vida espiritual a través de la oración</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <h2>Testimonios de nuestra comunidad</h2>
+                <div class="testimonial">
+                    <p>"La guía del Padre Eduardo fue fundamental para superar un momento difícil en mi vida. Su sabiduría y compasión me ayudaron a encontrar paz y renovar mi fe."</p>
+                    <p><strong>- María Gómez, Córdoba</strong></p>
+                </div>
+                <div class="testimonial">
+                    <p>"Gracias al consejo del Padre Eduardo, pude reconciliarme con mi familia después de años de distanciamiento. Su enfoque compasivo hizo toda la diferencia."</p>
+                    <p><strong>- Juan Pérez, Buenos Aires</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="container">
+            <h2>Reserva tu consulta gratuita con el Padre Eduardo</h2>
+            <p>Envíanos un mensaje para programar tu consulta personalizada:</p>
+            <a href="#" onclick="openEmailModal()" class="cta-button">Contactar al Padre Eduardo</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Iglesia de la Divina Misericordia - Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctaButtons = document.querySelectorAll('.cta-button');
+            ctaButtons.forEach(button => {
+                button.addEventListener('mouseover', function () {
+                    this.style.transform = 'scale(1.05) translateY(-3px)';
+                    this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+                });
+                button.addEventListener('mouseout', function () {
+                    this.style.transform = 'scale(1) translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+
+            const features = document.querySelectorAll('.feature');
+            features.forEach(feature => {
+                feature.addEventListener('mouseover', function () {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+                });
+                feature.addEventListener('mouseout', function () {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+
+            const topics = document.querySelectorAll('.topic');
+            topics.forEach(topic => {
+                topic.addEventListener('click', function () {
+                    this.style.backgroundColor = '#e6eaf0';
+                    setTimeout(() => {
+                        
+                        this.style.backgroundColor = '#fff';
+                    }, 300);
+                });
+            });
+        });
+
+        function openEmailModal() {
+            Swal.fire({
+                title: 'Ingresa tu email',
+                html: '<p>La consulta con el Padre Eduardo es completamente gratuita porque creemos en brindar apoyo espiritual a todos los que lo necesiten. Esta iniciativa busca ofrecer consuelo y orientación, permitiendo que las personas se sientan acompañadas en su camino de fe.</p>',
+                input: 'email',
+                inputPlaceholder: 'Tu correo electrónico',
+                showCancelButton: true,
+                confirmButtonText: 'Enviar',
+                cancelButtonText: 'Cancelar',
+                preConfirm: (email) => {
+                    if (!email) {
+                        Swal.showValidationMessage('¡Por favor ingresa un correo electrónico!');
+                    }
+                    return email;
+                }
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const email = result.value;
+                    console.log('Correo ingresado:', email);
+
+                    const url = `/iglesia/chat?email=${encodeURIComponent(email)}`;
+
+                    try {
+                        const response = await fetch(url);
+                        if (!response.ok) {
+                            throw new Error('Error en la solicitud: ' + response.statusText);
+                        }
+                        const data = await response.json();
+                        console.log('Respuesta del servidor:', data);
+
+                        if (data.redirectUrl) {
+                            window.location.href = data.redirectUrl;
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -19,7 +19,8 @@ const config = {
     WEB_SERVICE_URL: process.env.WEB_SERVICE_URL,
     APP_DOMAIN: process.env.APP_DOMAIN, 
     MERCADOPAGO_ACCESS_TOKEN: process.env.MERCADOPAGO_ACCESS_TOKEN,
-    AMARRES_ASSISTANT_ID: process.env.AMARRES_ASSISTANT_ID
+    AMARRES_ASSISTANT_ID: process.env.AMARRES_ASSISTANT_ID,
+    IGLESIA_ASSISTANT_ID: process.env.IGLESIA_ASSISTANT_ID
 };
 
 export default config;
